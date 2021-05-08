@@ -44,7 +44,7 @@ def determine_bread(code)
     price = [24.95, 16.95, 9.95]
   when /CF/
     var = [9, 5, 3]
-    price = [16.95, 9.95, 5.95]
+    price = [16.99, 9.95, 5.95]
   end
   sol = Array.new(var.length, 0)
   total = print_receipt(var, price, calculate(num, var, sol, -1, num), code)
