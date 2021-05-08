@@ -25,12 +25,12 @@ end
 
 def print_receipt(variables, price, solution, code)
   puts ''
-  puts "#{code}, Your total is $#{(multiply_array(price, solution) * 100).round / 100.0}"
+  puts "#{code}, Your total is $#{(multiply_array(price, solution)).round(2)}"
   puts('BREAKDOWN')
   (0..solution.length - 1).each do |x|
-    puts "#{solution[x]} x #{variables[x]} pack = $#{(solution[x] * price[x] * 100).round / 100.0}"
+    puts "#{solution[x]} x #{variables[x]} pack = $#{(solution[x] * price[x]).round(2)}"
   end
-  (multiply_array(price, solution) * 100).round / 100.0
+  (multiply_array(price, solution)).round(2)
 end
 
 # Custom error for invalid code
