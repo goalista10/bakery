@@ -24,6 +24,8 @@ def calculate(number, variables, solution, ctr, orig_number)
 end
 
 def print_receipt(variables, price, solution, code)
+  raise InvalidBreadAmount if solution.instance_of?(Integer)
+
   puts ''
   puts "#{code}, Your total is $#{(multiply_array(price, solution)).round(2)}"
   puts('BREAKDOWN')
@@ -36,6 +38,14 @@ end
 # Custom error for invalid code
 class InvalidBreadCode < StandardError
   def initialize(msg = 'The code you entered is invalid', exception_type = 'custom')
+    @exception_type = exception_type
+    super(msg)
+  end
+end
+
+# Custom error for invalid code
+class InvalidBreadAmount < StandardError
+  def initialize(msg = 'The amount you entered is invalid', exception_type = 'custom')
     @exception_type = exception_type
     super(msg)
   end

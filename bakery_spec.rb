@@ -22,4 +22,12 @@ RSpec.describe 'Bakery' do
     expect(bread[1]).to eq([9, 5, 3])
     expect(bread[2]).to eq(25.85)
   end
+
+  it 'should raise error for invalid amount' do
+    expect { decode('7 VS5') }.to raise_error(InvalidBreadAmount, /The amount you entered is invalid/)
+  end
+
+  it 'should raise error for invalid code' do
+    expect { decode('10 VS4') }.to raise_error(InvalidBreadCode, /The code you entered is invalid/)
+  end
 end
